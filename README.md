@@ -139,8 +139,8 @@ Create a function that builds a driver for the desired browser.
 
 Define the reusable driver fixture for all tests.
 
+# conftest.py
 ```python
-  # conftest.py
   import pytest
   from utils.driver_factory import get_driver
   from utils.config import BASE_URL
