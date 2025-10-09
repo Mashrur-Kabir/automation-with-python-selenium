@@ -33,7 +33,7 @@ source venv/bin/activate
 **Windows (PowerShell)**
 ```powershell
 python -m venv venv
-.\venv\Scripts\Activate.ps1
+.\venv\Scripts\Activate
 ```
 
 **Windows (CMD)**
@@ -47,7 +47,7 @@ python -m venv venv
 **Install dependencies**
 ```bash
 pip install --upgrade pip
-pip install -r automation-exercise/requirements.txt
+pip install -r requirements.txt
 ```
 
 ---
