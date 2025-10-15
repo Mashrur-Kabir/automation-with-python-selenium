@@ -14,7 +14,11 @@ class CheckoutPage(BasePage):
     PAY_AND_CONFIRM = (By.CSS_SELECTOR, "button[data-qa='pay-button']")
     DOWNLOAD_INVOICE = (By.CSS_SELECTOR, "a[href^='/download_invoice']")
     CONTINUE_BUTTON = (By.CSS_SELECTOR, "a[data-qa='continue-button']")
-
+    
+    #delete to erase the account after ordering
+    DELETE_ACCOUNT_LINK = (By.CSS_SELECTOR, "a[href='/delete_account']")
+    CONTINUE_BUTTON = (By.CSS_SELECTOR, "a[data-qa='continue-button']")
+    
     def proceed_to_checkout(self):
         self.click(self.PROCEED_TO_CHECKOUT, pause=2)
 
@@ -30,8 +34,14 @@ class CheckoutPage(BasePage):
         self.type_text(self.CVC, cvc)
         self.type_text(self.EXPIRY_MONTH, month)
         self.type_text(self.EXPIRY_YEAR, year)
-        self.click(self.PAY_AND_CONFIRM, pause=3)
+        self.click(self.PAY_AND_CONFIRM, pause=2)
 
     def finish_order(self):
         self.click(self.DOWNLOAD_INVOICE, pause=2)
         self.click(self.CONTINUE_BUTTON, pause=2)
+        
+    def delete_account(self):
+        self.click(self.DELETE_ACCOUNT_LINK, pause=2)
+        self.click(self.CONTINUE_BUTTON, pause=2)
+    
+

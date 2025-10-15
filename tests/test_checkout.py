@@ -10,15 +10,6 @@ from pages.cart_page import CartPage
 from pages.checkout_page import CheckoutPage
 from utils.config import BASE_URL
 
-@pytest.fixture
-def driver():
-    chrome_options = Options()
-    chrome_options.add_argument("--start-maximized")
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-    driver.get(BASE_URL)
-    yield driver
-    driver.quit()
 
 @pytest.mark.order(6)
 def test_checkout_process(driver):
@@ -29,7 +20,7 @@ def test_checkout_process(driver):
 
     # Step 1: Register again since old account was deleted
     home.go_to_signup_login()
-    register.signup("Kabir", "kabir951@gmail.com")
+    register.signup("Kabirs", "kabir95i@gmail.com")
     register.fill_account_info(
         password="123ert",
         day="15",
@@ -68,3 +59,6 @@ def test_checkout_process(driver):
 
     # Step 6: Download invoice and finish order
     checkout.finish_order()
+    
+    # Step 7: Delete account after order completion
+    checkout.delete_account()

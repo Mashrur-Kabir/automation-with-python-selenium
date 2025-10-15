@@ -7,16 +7,6 @@ from selenium.webdriver.chrome.options import Options
 from pages.contact_us_page import ContactUsPage
 from utils.config import BASE_URL
 
-@pytest.fixture
-def driver():
-    chrome_options = Options()
-    chrome_options.add_argument("--start-maximized")
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-    driver.get(BASE_URL)
-    yield driver
-    driver.quit()
-
 @pytest.mark.order(7)
 def test_contact_us(driver):
     contact_us = ContactUsPage(driver)

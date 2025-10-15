@@ -7,17 +7,8 @@ from pages.home_page import HomePage
 from pages.login_page import LoginPage
 from utils.config import BASE_URL
 
-@pytest.fixture
-def driver():
-    chrome_options = Options()
-    chrome_options.add_argument("--start-maximized")
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-    driver.get(BASE_URL)
-    yield driver
-    driver.quit()
 
-@pytest.mark.order(2)
+@pytest.mark.order(1) #for the testing order of components/features
 def test_login_and_delete_account(driver):
     home = HomePage(driver)
     login = LoginPage(driver)
@@ -26,7 +17,7 @@ def test_login_and_delete_account(driver):
     home.go_to_signup_login()
 
     # Step 2: Perform login
-    login.login("kabir951@gmail.com", "123ert")
+    login.login("kabir95@gmail.com", "123ert")
 
     # Step 3: Delete account
     login.delete_account()

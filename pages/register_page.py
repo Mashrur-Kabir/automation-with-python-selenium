@@ -57,3 +57,4 @@ class RegisterPage(BasePage):
 
     def logout(self):
         self.click(self.LOGOUT_BUTTON, pause=2)
+        

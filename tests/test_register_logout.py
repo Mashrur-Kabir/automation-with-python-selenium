@@ -7,18 +7,8 @@ from pages.home_page import HomePage
 from pages.register_page import RegisterPage
 from utils.config import BASE_URL
 
-@pytest.fixture
-def driver():
-    chrome_options = Options()
-    chrome_options.add_argument("--start-maximized")   # optional
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=chrome_options)
-    # 👇 Go to the target website before tests start
-    driver.get(BASE_URL)
-    yield driver
-    driver.quit()
 
-@pytest.mark.order(1) #for testing order of components/features
+@pytest.mark.order(2) 
 def test_register_and_logout(driver):
     home = HomePage(driver)
     register = RegisterPage(driver)
@@ -27,7 +17,7 @@ def test_register_and_logout(driver):
     home.go_to_signup_login()
 
     # Step 2: Signup with name/email
-    register.signup("Kabirr", "kabir951@gmail.com")
+    register.signup("Kabir", "kabir95@gmail.com")
 
     # Step 3: Fill details
     register.fill_account_info(
